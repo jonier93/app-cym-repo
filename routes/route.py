@@ -16,3 +16,7 @@ def consult_page():
 @app.route("/register_user", methods=["post"])
 def register_user():
     return func_register_user()
+    
+@app.route("/consult_user", methods=["post"])
+def consult_user():
+    return func_consult_user()
