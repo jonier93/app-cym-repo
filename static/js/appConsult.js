@@ -12,7 +12,7 @@ function consult_user() {
     })
     .then(resp => resp.json())
     .then(data => {
-        alert(data)
+        alert(data.status)
     })
     .catch(err => {
         alert("Error " + err)
