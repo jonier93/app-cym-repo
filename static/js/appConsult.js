@@ -2,8 +2,7 @@
 function consult_user() {
     let id_user = document.getElementById("ident").value
     let obj_user = {
-        "id": id_user,
-        "passw": "12345" // Es solo para pruebas no se utiliza
+        "id": id_user
     }
     fetch("/consult_user", {
         "method":"post",
@@ -12,7 +11,17 @@ function consult_user() {
     })
     .then(resp => resp.json())
     .then(data => {
-        alert(data.status)
+        if (data.status == "ok") {
+            document.getElementById("txt-data").value = "Nombre: " + data.name 
+            + "\n" + "Lastname: " + data.lastname
+            + "\n" + "Birthday: " + data.birthday
+            document.getElementById("img-user").src = data.photo
+        }
+        else {
+            alert("Usuario no encontrado")
+            document.getElementById("txt-data").value = "" 
+            document.getElementById("img-user").src = ""
+        }
     })
     .catch(err => {
         alert("Error " + err)
